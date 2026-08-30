@@ -8,6 +8,13 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg?logo=docker&logoColor=white)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+### 🔴 Live Demo
+
+**[https://portfolio-watchdog-83529876763.us-central1.run.app](https://portfolio-watchdog-83529876763.us-central1.run.app)**
+
+Deployed on Google Cloud Run. The dashboard and the API are the same
+service - the agent runs automatically during US market hours.
+
 ---
 
 ## 📖 Overview
@@ -54,7 +61,7 @@ flowchart LR
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/portfolio-watchdog.git
+git clone https://github.com/Maze006/portfolio-watchdog.git
 cd portfolio-watchdog
 ```
 
@@ -101,7 +108,8 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 ### 6. Explore Interactive API Docs
 Visit the interactive Swagger UI at:
-👉 **[http://localhost:8000/docs](http://localhost:8000/docs)**
+👉 Live: **[https://portfolio-watchdog-83529876763.us-central1.run.app/docs](https://portfolio-watchdog-83529876763.us-central1.run.app/docs)**
+👉 Local: **[http://localhost:8000/docs](http://localhost:8000/docs)**
 
 ---
 
@@ -124,13 +132,15 @@ Visit the interactive Swagger UI at:
 The frontend is a single self-contained file, `frontend/index.html`. It reads
 everything from the API - there is no hardcoded or placeholder data.
 
-Serve it alongside the backend:
+FastAPI serves it directly, so there is **no separate frontend server**. Once the
+backend is running, open the same URL in a browser:
 
-```bash
-python -m http.server 5500 --directory frontend
-```
+👉 Live: **[https://portfolio-watchdog-83529876763.us-central1.run.app](https://portfolio-watchdog-83529876763.us-central1.run.app)**
 
-Then open **http://localhost:5500** with the API running on port 8000.
+Running it yourself? Same thing at **[http://localhost:8000](http://localhost:8000)**.
+
+The dashboard calls the API using same-origin relative paths, so it works
+unchanged on localhost, in Docker, and on Cloud Run.
 
 | View | Shows |
 | :--- | :--- |
@@ -155,7 +165,7 @@ With `AUTO_RUN_PER_DAY=8` the schedule is:
 Check status at any time:
 
 ```bash
-curl http://localhost:8000/scheduler
+curl https://portfolio-watchdog-83529876763.us-central1.run.app/scheduler
 ```
 
 Scheduled and manual runs share a lock, so the two can never overlap and
@@ -179,17 +189,17 @@ docker run -p 8080:8080 --env-file .env portfolio-watchdog
 
 ### Deploy to Google Cloud Run
 ```bash
-# Submit build to Google Cloud Artifact Registry
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/portfolio-watchdog
-
-# Deploy to Cloud Run
 gcloud run deploy portfolio-watchdog \
-  --image gcr.io/YOUR_PROJECT_ID/portfolio-watchdog \
-  --platform managed \
+  --source . \
   --region us-central1 \
   --allow-unauthenticated \
-  --set-env-vars GEMINI_API_KEYS="key1,key2"
+  --min-instances 1 \
+  --set-env-vars GEMINI_API_KEYS=key1,key2,key3,ALLOWED_ORIGINS=*
 ```
+
+> This can also be set up entirely from the Cloud Console UI using
+> **"Continuously deploy from a repository"** connected to GitHub - the path
+> used for this project's live deployment.
 
 ---
 
@@ -210,3 +220,4 @@ gcloud run deploy portfolio-watchdog \
 | **LLM Reasoning** | [google-genai](https://pypi.org/project/google-genai/) | Gemini Flash structured decision-making |
 | **Persistence** | [SQLite](https://www.sqlite.org/) | Embedded relational decision and portfolio ledger |
 | **Server & Container** | [Uvicorn](https://www.uvicorn.org/) & [Docker](https://www.docker.com/) | Cloud Run–ready containerized runtime |
+
