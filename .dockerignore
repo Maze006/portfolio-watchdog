@@ -1,0 +1,42 @@
+# Keep secrets OUT of the image. Dockerfile uses `COPY . .`, so without this
+# .env (live Gemini API keys) would be baked into every layer and readable by
+# anyone who pulls the image. Pass secrets at runtime instead:
+#   docker run --env-file .env ...
+#   gcloud run deploy --set-env-vars GEMINI_API_KEYS="..."
+.env
+.env.bak
+.env.local
+*.key
+
+# Local virtualenv - hundreds of MB, and the wrong platform's binaries.
+# Dependencies are installed inside the image from requirements.txt.
+venv/
+.venv/
+env/
+
+# Local database. init_db() recreates it on first launch.
+# Remove this line if you want to ship a pre-populated demo database.
+watchdog.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.db.backup
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Docs and tooling that do not belong in a runtime image
+.git/
+.gitignore
+.claude/
+.vscode/
+.idea/
+README.md
+WORKLOG.md
+frontend/screen.png
+frontend/DESIGN.md

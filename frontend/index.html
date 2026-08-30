@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PORTFOLIO WATCHDOG</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "background": "#0c160c",
+                    "on-tertiary-container": "#835900",
+                    "on-secondary-fixed": "#410003",
+                    "tertiary-container": "#ffd79e",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#00e55b",
+                    "on-primary-container": "#007128",
+                    "tertiary-fixed": "#ffddaf",
+                    "on-tertiary": "#432c00",
+                    "on-primary-fixed": "#002107",
+                    "on-primary": "#003911",
+                    "secondary": "#ffb3ac",
+                    "outline": "#849581",
+                    "secondary-container": "#c40019",
+                    "surface-dim": "#0c160c",
+                    "surface-container": "#182218",
+                    "surface-bright": "#313c30",
+                    "primary-fixed": "#6bff83",
+                    "surface-container-highest": "#2d372c",
+                    "surface-variant": "#2d372c",
+                    "outline-variant": "#3b4b3a",
+                    "error-container": "#93000a",
+                    "inverse-primary": "#006e27",
+                    "tertiary-fixed-dim": "#ffba43",
+                    "on-secondary": "#680008",
+                    "primary-container": "#00ff66",
+                    "on-surface": "#dae6d5",
+                    "on-tertiary-fixed-variant": "#614000",
+                    "primary": "#edffe8",
+                    "tertiary": "#fff8f4",
+                    "on-secondary-container": "#ffd2cd",
+                    "secondary-fixed-dim": "#ffb3ac",
+                    "surface-tint": "#00e55b",
+                    "surface-container-lowest": "#071007",
+                    "surface": "#0c160c",
+                    "on-primary-fixed-variant": "#00531b",
+                    "on-error": "#690005",
+                    "on-surface-variant": "#b9ccb5",
+                    "on-background": "#dae6d5",
+                    "surface-container-low": "#141e14",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#293328",
+                    "inverse-surface": "#dae6d5",
+                    "on-tertiary-fixed": "#281800",
+                    "secondary-fixed": "#ffdad6",
+                    "surface-container-high": "#222d22",
+                    "on-secondary-fixed-variant": "#930010"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+                "spacing": {
+                    "margin-mobile": "16px",
+                    "sm": "8px",
+                    "xl": "40px",
+                    "lg": "24px",
+                    "margin-desktop": "32px",
+                    "unit": "8px",
+                    "md": "16px",
+                    "gutter": "16px",
+                    "xs": "4px"
+                },
+                "fontFamily": {
+                    "headline-xl": ["Geist", "system-ui", "sans-serif"],
+                    "label-caps": ["'Space Mono'", "ui-monospace", "monospace"],
+                    "body-md": ["'Space Mono'", "ui-monospace", "monospace"],
+                    "body-lg": ["'Space Mono'", "ui-monospace", "monospace"],
+                    "headline-lg": ["Geist", "system-ui", "sans-serif"],
+                    "data-display": ["'Space Mono'", "ui-monospace", "monospace"],
+                    "label-sm": ["'Space Mono'", "ui-monospace", "monospace"],
+                    "headline-md": ["Geist", "system-ui", "sans-serif"]
+                },
+                "fontSize": {
+                    "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                    "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                    "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "data-display": ["20px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                    "label-sm": ["10px", { "lineHeight": "1", "fontWeight": "400" }],
+                    "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    body { background-color: #0c160c; color: #dae6d5; }
+    .brutalist-border { border: 1px solid rgba(255, 255, 255, 0.1); }
+    .brutalist-border-b { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .pulse-green { animation: pulseGreen 2s infinite; }
+    @keyframes pulseGreen {
+        0% { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(0, 255, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
+    }
+    .status-dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background-color: #00ff66; display: inline-block;
+        animation: blink 1.5s infinite; margin-right: 8px;
+    }
+    .status-dot.offline { background-color: #ffb4ab; animation: none; }
+    .status-dot.pending { background-color: #ffba43; }
+    .monitoring-pulse { animation: monitoringPulse 2s infinite; }
+    @keyframes monitoringPulse {
+        0% { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.6); }
+        70% { box-shadow: 0 0 0 6px rgba(0, 255, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .run-cycle-btn { background-size: 200% auto; }
+    .run-cycle-btn:hover:not(:disabled) {
+        box-shadow: 0 0 20px rgba(0,255,102,0.6);
+        transform: translateY(-2px) scale(1.02);
+        background-image: linear-gradient(90deg, #10b981 0%, #34d399 50%, #10b981 100%);
+        animation: shimmerBtn 1.5s linear infinite;
+    }
+    .run-cycle-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    @keyframes shimmerBtn {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .animate-entrance { animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+
+        @keyframes slideUpFade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .new-entry-highlight { animation: newEntryFlash 2.5s ease-out forwards; }
+        @keyframes newEntryFlash {
+            0% { background-color: rgba(0, 255, 102, 0.1); border-color: #00ff66; }
+            100% { background-color: transparent; }
+        }
+    }
+
+    .ticker-card:hover {
+        box-shadow: 0 0 15px rgba(218, 230, 213, 0.15);
+        border-color: rgba(218, 230, 213, 0.4);
+        transform: translateY(-2px) scale(1.02);
+    }
+
+    .log-row { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    /* Sidebar transition classes */
+    .sidebar-expanded { width: 16rem; }
+    .sidebar-collapsed { width: 4rem; }
+    .sidebar-text {
+        transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .sidebar-collapsed .sidebar-text { opacity: 0; width: 0; margin-left: 0; }
+    .sidebar-collapsed .sidebar-header-text { display: none; }
+    .sidebar-collapsed .status-dot-container { justify-content: center; }
+    .sidebar-collapsed .status-text { display: none; }
+    .sidebar-collapsed .nav-item { justify-content: center; padding-left: 0; padding-right: 0; }
+    .sidebar-collapsed .nav-icon { margin-right: 0; }
+
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .view { display: none; }
+    .view.active { display: flex; }
+</style>
+</head>
+<body class="h-screen font-body-md text-body-md antialiased overflow-hidden selection:bg-primary-container selection:text-background flex flex-col md:flex-row w-full">
+
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest text-primary-fixed border-r border-outline-variant flex flex-col z-40 md:flex-shrink-0 transition-all duration-300 ease-in-out font-label-caps text-label-caps p-md hidden md:flex h-full sidebar-expanded relative" id="sidebar">
+<button class="absolute -right-3 top-6 bg-surface-container-highest border border-outline-variant text-on-surface rounded-full w-6 h-6 flex items-center justify-center hover:bg-surface-variant transition-colors z-50" id="sidebar-toggle">
+<span class="material-symbols-outlined text-[16px] transition-transform duration-300" id="sidebar-toggle-icon">chevron_left</span>
+</button>
+<div class="mb-xl flex flex-col items-start gap-sm border-b border-outline-variant pb-md w-full relative">
+<span class="font-headline-md text-headline-md font-black text-primary-fixed uppercase tracking-tighter sidebar-header-text">WATCHDOG</span>
+<div class="flex items-center text-on-surface-variant text-label-sm status-dot-container w-full">
+<span class="status-dot pending" id="sidebarDot"></span> <span class="status-text" id="sidebarStatus">CONNECTING</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm flex-1 w-full">
+<a class="nav-link bg-primary-container text-on-primary-container border-r-4 border-primary-fixed hover:bg-surface-container flex items-center p-md gap-md nav-item" data-view="terminal" href="#">
+<span class="material-symbols-outlined nav-icon" style='font-variation-settings: "FILL" 1;'>terminal</span>
+<span class="sidebar-text">TERMINAL</span>
+</a>
+<a class="nav-link text-on-surface-variant hover:text-on-surface hover:bg-surface-container flex items-center p-md gap-md transition-colors nav-item" data-view="decisions" href="#">
+<span class="material-symbols-outlined nav-icon">account_balance_wallet</span>
+<span class="sidebar-text">DECISION LOG</span>
+</a>
+</div>
+</nav>
+
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden w-full transition-all duration-300" id="main-content">
+
+<!-- TopNavBar -->
+<header class="bg-background text-primary-fixed flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-sm h-16 border-b border-outline-variant flex-shrink-0 z-30">
+<div class="flex items-center gap-md">
+<h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-on-background uppercase truncate max-w-[150px] md:max-w-none">PORTFOLIO WATCHDOG</h1>
+<div class="hidden sm:flex items-center px-sm py-xs bg-surface-container rounded-DEFAULT border border-outline-variant ml-lg text-label-sm">
+<span class="status-dot monitoring-pulse pending" id="headerDot"></span> <span id="headerStatus">CONNECTING</span>
+</div>
+</div>
+<button class="run-cycle-btn bg-emerald-600 text-background font-label-caps text-label-caps font-bold px-md py-sm md:px-lg rounded-DEFAULT transition-all duration-300 flex items-center gap-sm hover:bg-emerald-500 flex-shrink-0" id="runCycleBtn">
+<span class="material-symbols-outlined text-[18px]" id="runIcon">play_arrow</span>
+<span class="hidden sm:inline" id="runLabel">RUN CYCLE</span>
+</button>
+</header>
+
+<!-- Summary Strip -->
+<section class="w-full bg-surface-container-lowest border-b border-outline-variant px-margin-mobile md:px-margin-desktop py-md flex flex-col sm:flex-row gap-lg md:gap-xl animate-entrance delay-100 flex-shrink-0">
+<div class="flex flex-col gap-xs">
+<span class="text-on-surface-variant font-label-caps text-label-caps">CASH BALANCE</span>
+<span class="font-data-display text-data-display text-white tracking-wider" id="cashBalance">--</span>
+</div>
+<div class="hidden sm:block w-px bg-outline-variant h-auto self-stretch"></div>
+<div class="flex flex-col gap-xs">
+<span class="text-on-surface-variant font-label-caps text-label-caps">TOTAL POSITION VALUE</span>
+<span class="font-data-display text-data-display text-white tracking-wider" id="positionValue">--</span>
+</div>
+<div class="hidden sm:block w-px bg-outline-variant h-auto self-stretch"></div>
+<div class="flex flex-col gap-xs">
+<span class="text-on-surface-variant font-label-caps text-label-caps">TOTAL EQUITY</span>
+<span class="font-data-display text-data-display tracking-wider" id="totalEquity">--</span>
+</div>
+</section>
+
+<!-- ============ TERMINAL VIEW ============ -->
+<div class="view active p-margin-mobile md:p-margin-desktop flex-col gap-lg md:gap-xl flex-1 overflow-hidden w-full" id="view-terminal">
+
+<!-- Ticker Grid -->
+<section class="animate-entrance delay-200 flex-shrink-0 w-full">
+<div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-md w-full" id="tickerGrid">
+<div class="text-on-surface-variant text-label-sm col-span-full">Loading watchlist...</div>
+</div>
+</section>
+
+<!-- Agent Decision Log -->
+<section class="animate-entrance delay-300 flex-1 flex flex-col overflow-hidden w-full">
+<div class="flex justify-between items-center mb-sm flex-shrink-0">
+<span class="font-label-caps text-label-caps text-on-surface-variant">AGENT DECISION LOG</span>
+<span class="text-label-sm text-on-surface-variant" id="cycleStatus">IDLE</span>
+</div>
+<div class="h-px w-full bg-outline-variant mb-sm flex-shrink-0">
+<div class="h-px w-0 bg-primary-container transition-all duration-500" id="progressBar"></div>
+</div>
+<div class="flex-1 overflow-y-auto hide-scrollbar flex flex-col gap-xs border border-outline-variant rounded-DEFAULT bg-surface-container-lowest p-md" id="activityLog"></div>
+</section>
+
+</div>
+
+<!-- ============ DECISION LOG VIEW ============ -->
+<div class="view p-margin-mobile md:p-margin-desktop flex-col gap-lg flex-1 overflow-hidden w-full" id="view-decisions">
+<div class="flex justify-between items-end gap-md flex-wrap flex-shrink-0">
+<span class="font-headline-md text-headline-md text-on-background uppercase tracking-tighter">DECISION LOG</span>
+<select class="bg-surface-container border border-outline-variant rounded-DEFAULT px-sm py-xs font-label-caps text-label-caps text-on-surface" id="historyFilter">
+<option value="ALL">ALL TICKERS</option>
+</select>
+</div>
+<div class="flex-1 overflow-y-auto hide-scrollbar border border-outline-variant rounded-DEFAULT bg-surface-container-lowest" id="historyList"></div>
+</div>
+
+</main>
+
+<!-- Decision Report Modal (one instance, populated from live data) -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center bg-background/80 backdrop-blur-sm p-md" id="reportModal">
+<div class="w-full max-w-2xl bg-surface-container-lowest border shadow-2xl rounded-DEFAULT overflow-hidden animate-entrance" id="reportModalFrame">
+<div class="flex justify-between items-center p-md border-b border-outline-variant bg-surface-container-low">
+<div class="flex items-center gap-md">
+<span class="font-label-caps text-label-caps font-bold text-on-surface" id="modalTitle"></span>
+<span class="px-sm py-xs border font-label-caps text-[10px] rounded-DEFAULT" id="modalAction"></span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors" id="modalCloseX"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-xl flex flex-col gap-lg max-h-[70vh] overflow-y-auto hide-scrollbar" id="modalBody"></div>
+</div>
+</div>
+
+<script>
+    // Same-origin by default: when FastAPI serves this page, "" makes every
+    // fetch a relative path that follows whatever domain the app is deployed to.
+    // The file:// fallback keeps the page usable when opened straight off disk.
+    const API_BASE = window.location.protocol === "file:" ? "http://localhost:8000" : "";
+    // Human-readable form of the above, for error messages ("" reads as nothing).
+    const API_LABEL = API_BASE || window.location.origin;
+
+    const state = {
+        watchlist: [],
+        quotes: {},
+        positions: {},
+        cash: 0,
+        totalPositionValue: 0,
+        history: [],
+        isRunning: false
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const money = (n) => (n === null || n === undefined || isNaN(n))
+        ? "--"
+        : "$" + Number(n).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const esc = (s) => String(s === null || s === undefined ? "" : s)
+        .replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+    const GREEN = "#00ff66";
+
+    function actionColorClasses(action) {
+        const a = String(action).toUpperCase();
+        if (a === "BUY") return "border-[#00ff66] bg-[#00ff66]/10 text-[#00ff66]";
+        if (a === "SELL") return "border-error bg-error/10 text-error";
+        return "border-tertiary-fixed-dim bg-tertiary-fixed-dim/10 text-tertiary-fixed-dim";
+    }
+
+    function fmtTimestamp(iso) {
+        if (!iso) return "--";
+        const d = new Date(iso);
+        if (isNaN(d.getTime())) return String(iso);
+        return d.toLocaleString("en-US", {
+            month: "short", day: "2-digit",
+            hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false
+        });
+    }
+
+    function summarizeError(raw) {
+        const s = String(raw === null || raw === undefined ? "" : raw);
+        if (/RESOURCE_EXHAUSTED|\b429\b/.test(s)) {
+            const lim = s.match(/limit:\s*(\d+)/);
+            return "Gemini quota exhausted (429)" + (lim ? " - free-tier cap is " + lim[1] + " requests/day" : "");
+        }
+        if (/\b401\b|API key|PERMISSION_DENIED/i.test(s)) return "Gemini auth rejected - check GEMINI_API_KEYS in .env";
+        if (/timed? ?out|timeout/i.test(s)) return "Upstream timeout - " + s.slice(0, 100);
+        return s.length > 160 ? s.slice(0, 160) + "..." : s;
+    }
+
+    /* ---------------- connection + views ---------------- */
+    function setConnection(status) {
+        const map = {
+            online:  { text: "MONITORING", side: "STATUS: ACTIVE",  cls: "" },
+            offline: { text: "OFFLINE",    side: "STATUS: OFFLINE", cls: "offline" },
+            pending: { text: "CONNECTING", side: "CONNECTING",      cls: "pending" }
+        };
+        const s = map[status] || map.pending;
+        $("headerStatus").textContent = s.text;
+        $("sidebarStatus").textContent = s.side;
+        $("headerDot").className = "status-dot monitoring-pulse " + s.cls;
+        $("sidebarDot").className = "status-dot " + s.cls;
+    }
+
+    function switchView(name) {
+        document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
+        const target = $("view-" + name);
+        if (target) target.classList.add("active");
+
+        document.querySelectorAll(".nav-link").forEach((n) => {
+            const on = n.dataset.view === name;
+            n.className = on
+                ? "nav-link bg-primary-container text-on-primary-container border-r-4 border-primary-fixed hover:bg-surface-container flex items-center p-md gap-md nav-item"
+                : "nav-link text-on-surface-variant hover:text-on-surface hover:bg-surface-container flex items-center p-md gap-md transition-colors nav-item";
+        });
+    }
+
+    /* ---------------- activity log ---------------- */
+    function logLine(message, tone) {
+        tone = tone || "INFO";
+        const colors = { INFO: "text-on-surface", SUCCESS: "text-[#00ff66]", WARN: "text-tertiary-fixed-dim", ERROR: "text-error" };
+        const row = document.createElement("div");
+        row.className = "log-row flex gap-md items-start font-body-md text-label-sm py-xs border-b border-outline-variant/30 new-entry-highlight";
+        row.innerHTML =
+            '<span class="text-on-surface-variant flex-shrink-0 w-[70px]">' + fmtTimestamp(new Date().toISOString()).split(" ").slice(2).join(" ") + '</span>'
+            + '<span class="flex-shrink-0 w-[62px] font-bold ' + (colors[tone] || colors.INFO) + '">' + tone + '</span>'
+            + '<span class="text-on-surface flex-1 break-words">' + esc(message) + '</span>';
+        $("activityLog").appendChild(row);
+        $("activityLog").scrollTop = $("activityLog").scrollHeight;
+    }
+
+    function renderRecentDecisions() {
+        const box = $("activityLog");
+        box.innerHTML = "";
+        if (!state.history.length) {
+            box.innerHTML = '<div class="text-on-surface-variant text-label-sm">No decisions logged yet. Press RUN CYCLE to start the agent.</div>';
+            return;
+        }
+        state.history.slice(0, 12).forEach((h) => {
+            const row = document.createElement("div");
+            row.className = "log-row flex gap-md items-center font-body-md text-label-sm py-xs border-b border-outline-variant/30";
+            row.innerHTML =
+                '<span class="text-on-surface-variant flex-shrink-0 w-[110px]">' + esc(fmtTimestamp(h.timestamp)) + '</span>'
+                + '<span class="flex-shrink-0 w-[52px] font-bold text-on-surface">' + esc(h.ticker) + '</span>'
+                + '<span class="flex-shrink-0"><span class="px-xs py-[2px] border rounded ' + actionColorClasses(h.action) + '">' + esc(h.action) + '</span></span>'
+                + '<span class="flex-shrink-0 w-[44px] text-on-surface-variant">' + Math.round(Number(h.confidence) * 100) + '%</span>'
+                + '<span class="text-on-surface flex-1 truncate">' + esc(h.reasoning) + '</span>';
+            box.appendChild(row);
+        });
+    }
+
+    /* ---------------- rendering ---------------- */
+    function renderTickerGrid() {
+        const grid = $("tickerGrid");
+        if (!state.watchlist.length) {
+            grid.innerHTML = '<div class="text-on-surface-variant text-label-sm col-span-full">No tickers returned by /watchlist.</div>';
+            return;
+        }
+
+        grid.innerHTML = state.watchlist.map((ticker) => {
+            const quote = state.quotes[ticker] || {};
+            const position = state.positions[ticker];
+            const held = position && position.shares > 0;
+
+            const price = quote.current_price;
+            const pct = quote.percent_change_today;
+
+            let pctHtml = '<span class="text-[12px] font-bold text-on-surface-variant">--</span>';
+            if (pct !== null && pct !== undefined) {
+                const cls = pct < 0 ? "text-error" : "text-[#00ff66]";
+                const sign = pct > 0 ? "+" : "";
+                pctHtml = '<span class="text-[12px] font-bold ' + cls + '">' + sign + pct.toFixed(2) + '%</span>';
+            }
+
+            const positionText = held
+                ? "Position: " + position.shares + " Shares"
+                : "Position: No Position";
+
+            const dim = held ? "" : " opacity-50";
+            const borderTone = held ? "border-outline-variant" : "border-outline-variant/30";
+
+            return '<div class="ticker-card transition-all duration-300 ease-out w-full bg-surface-container-lowest border ' + borderTone
+                + ' rounded-DEFAULT p-md flex flex-col gap-sm cursor-pointer hover:shadow-[0_0_25px_rgba(218,230,213,0.15)]' + dim + '" data-ticker="' + esc(ticker) + '">'
+                + '<div class="flex justify-between items-center">'
+                + '<span class="font-label-caps text-label-caps font-bold text-on-surface">' + esc(ticker) + '</span>'
+                + '<div class="flex items-center gap-2">'
+                + '<span class="font-data-display text-[16px] text-on-surface">' + (price ? money(price) : "--") + '</span>'
+                + pctHtml
+                + '</div></div>'
+                + '<div class="text-on-surface-variant font-body-md text-label-sm border-t ' + borderTone + ' pt-sm mt-xs">'
+                + esc(positionText)
+                + '</div></div>';
+        }).join("");
+
+        grid.querySelectorAll("[data-ticker]").forEach((card) => {
+            card.addEventListener("click", () => openReport(card.dataset.ticker));
+        });
+    }
+
+    function renderSummary() {
+        $("cashBalance").textContent = money(state.cash);
+        $("positionValue").textContent = money(state.totalPositionValue);
+
+        const equity = state.cash + state.totalPositionValue;
+        const el = $("totalEquity");
+        el.textContent = money(equity);
+        el.className = "font-data-display text-data-display tracking-wider "
+            + (equity >= 10000 ? "text-[#00ff66]" : "text-error");
+    }
+
+    function renderHistoryView() {
+        const list = $("historyList");
+        const filter = $("historyFilter").value;
+        const items = filter === "ALL" ? state.history : state.history.filter((h) => h.ticker === filter);
+
+        if (!items.length) {
+            list.innerHTML = '<div class="p-md text-on-surface-variant text-label-sm">No decisions logged yet.</div>';
+            return;
+        }
+
+        list.innerHTML = items.map((h) => {
+            const patterns = Array.isArray(h.patterns_detected) ? h.patterns_detected : [];
+            const patternText = patterns.length
+                ? patterns.map((p) => esc(p.pattern || p.name || JSON.stringify(p))).join(", ")
+                : "none detected";
+            return '<div class="log-row border-b border-outline-variant/30 p-md hover:bg-surface-container flex flex-col gap-sm">'
+                + '<div class="flex items-center gap-md flex-wrap">'
+                + '<span class="font-label-caps text-label-caps font-bold text-on-surface">' + esc(h.ticker) + '</span>'
+                + '<span class="px-xs py-[2px] border rounded text-label-sm ' + actionColorClasses(h.action) + '">' + esc(h.action) + '</span>'
+                + '<span class="font-data-display text-label-sm text-on-surface">' + Math.round(Number(h.confidence) * 100) + '%</span>'
+                + '<span class="text-label-sm text-on-surface-variant ml-auto">' + esc(fmtTimestamp(h.timestamp)) + '</span>'
+                + '</div>'
+                + '<p class="font-body-md text-label-sm text-on-surface leading-relaxed">' + esc(h.reasoning) + '</p>'
+                + '<span class="text-label-sm text-on-surface-variant">PATTERNS: ' + patternText + '</span>'
+                + '</div>';
+        }).join("");
+    }
+
+    function rebuildFilterOptions() {
+        const sel = $("historyFilter");
+        const current = sel.value;
+        const seen = Array.from(new Set(state.history.map((h) => h.ticker)));
+        sel.innerHTML = '<option value="ALL">ALL TICKERS</option>'
+            + seen.map((t) => '<option value="' + esc(t) + '">' + esc(t) + '</option>').join("");
+        if (Array.from(sel.options).some((o) => o.value === current)) sel.value = current;
+    }
+
+    /* ---------------- decision report modal ---------------- */
+    function openReport(ticker) {
+        const forTicker = state.history.filter((h) => h.ticker === ticker);
+        const latest = forTicker[0];
+        const quote = state.quotes[ticker] || {};
+        const position = state.positions[ticker];
+
+        $("modalTitle").textContent = ticker + " DECISION REPORT";
+
+        const actionEl = $("modalAction");
+        if (latest) {
+            actionEl.textContent = latest.action;
+            actionEl.className = "px-sm py-xs border font-label-caps text-[10px] rounded-DEFAULT " + actionColorClasses(latest.action);
+            $("reportModalFrame").className = "w-full max-w-2xl bg-surface-container-lowest border shadow-2xl rounded-DEFAULT overflow-hidden animate-entrance "
+                + (String(latest.action).toUpperCase() === "BUY" ? "border-[#00ff66]" : "border-outline-variant");
+        } else {
+            actionEl.textContent = "NO DATA";
+            actionEl.className = "px-sm py-xs border border-outline-variant text-on-surface-variant font-label-caps text-[10px] rounded-DEFAULT";
+            $("reportModalFrame").className = "w-full max-w-2xl bg-surface-container-lowest border border-outline-variant shadow-2xl rounded-DEFAULT overflow-hidden animate-entrance";
+        }
+
+        let html = "";
+
+        html += '<div class="flex justify-between border-b border-outline-variant pb-md flex-wrap gap-md">'
+            + '<div class="flex flex-col"><span class="text-label-sm text-on-surface-variant uppercase">Last Price</span>'
+            + '<span class="font-data-display text-on-surface">' + (quote.current_price ? money(quote.current_price) : "--") + '</span></div>'
+            + '<div class="flex flex-col"><span class="text-label-sm text-on-surface-variant uppercase">Position</span>'
+            + '<span class="font-data-display text-on-surface">' + (position && position.shares > 0 ? position.shares + " sh @ " + money(position.avg_price) : "None") + '</span></div>'
+            + '<div class="flex flex-col items-end"><span class="text-label-sm text-on-surface-variant uppercase">Confidence</span>'
+            + '<span class="font-data-display ' + (latest && String(latest.action).toUpperCase() === "BUY" ? "text-[#00ff66]" : "text-on-surface") + '">'
+            + (latest ? Math.round(Number(latest.confidence) * 100) + "%" : "--") + '</span></div>'
+            + '</div>';
+
+        if (latest) {
+            html += '<div class="flex gap-md items-start bg-surface-container p-md rounded-DEFAULT border border-outline-variant">'
+                + '<span class="material-symbols-outlined text-on-surface flex-shrink-0">psychology</span>'
+                + '<div class="flex flex-col gap-xs">'
+                + '<span class="font-label-caps text-label-sm text-on-surface-variant">AGENT REASONING</span>'
+                + '<p class="font-body-md leading-relaxed text-on-surface">' + esc(latest.reasoning) + '</p>'
+                + '<span class="text-label-sm text-on-surface-variant mt-xs">' + esc(fmtTimestamp(latest.timestamp)) + '</span>'
+                + '</div></div>';
+
+            const patterns = Array.isArray(latest.patterns_detected) ? latest.patterns_detected : [];
+            if (patterns.length) {
+                html += '<div class="flex flex-col gap-sm border-t border-outline-variant pt-md">'
+                    + '<span class="font-label-caps text-label-sm text-on-surface-variant">PATTERNS DETECTED</span>'
+                    + patterns.map((p) =>
+                        '<div class="flex justify-between items-center text-label-sm font-data-display text-on-surface border-b border-outline-variant/30 py-xs">'
+                        + '<span class="text-on-surface-variant">' + esc(p.date || "--") + '</span>'
+                        + '<span>' + esc(p.pattern || p.name || "") + '</span></div>'
+                      ).join("")
+                    + '</div>';
+            }
+        } else {
+            html += '<div class="text-on-surface-variant font-body-md">No decision has been logged for ' + esc(ticker) + ' yet. Run a cycle to generate one.</div>';
+        }
+
+        const recent = forTicker.slice(1, 4);
+        if (recent.length) {
+            html += '<div class="flex flex-col gap-sm border-t border-outline-variant pt-md">'
+                + '<span class="font-label-caps text-label-sm text-on-surface-variant">RECENT HISTORY FOR ' + esc(ticker) + '</span>'
+                + recent.map((h) =>
+                    '<div class="flex justify-between items-center text-label-sm font-data-display text-on-surface border-b border-outline-variant/30 py-xs">'
+                    + '<span class="text-on-surface-variant">' + esc(fmtTimestamp(h.timestamp)) + '</span>'
+                    + '<span class="px-xs py-[2px] border rounded ' + actionColorClasses(h.action) + '">' + esc(h.action) + '</span>'
+                    + '<span>' + Math.round(Number(h.confidence) * 100) + '%</span></div>'
+                  ).join("")
+                + '</div>';
+        }
+
+        html += '<button class="w-full py-md bg-surface-container-high text-on-surface font-label-caps font-bold hover:bg-surface-variant transition-all border border-outline-variant rounded-DEFAULT" id="modalAck">ACKNOWLEDGE &amp; CLOSE</button>';
+
+        $("modalBody").innerHTML = html;
+        $("modalAck").addEventListener("click", closeReport);
+
+        $("reportModal").classList.remove("hidden");
+        $("reportModal").classList.add("flex");
+    }
+
+    function closeReport() {
+        $("reportModal").classList.add("hidden");
+        $("reportModal").classList.remove("flex");
+    }
+
+    /* ---------------- fetching ---------------- */
+    async function fetchWatchlist() {
+        const res = await fetch(API_BASE + "/watchlist");
+        if (!res.ok) throw new Error("watchlist " + res.status);
+        const data = await res.json();
+        state.watchlist = data.tickers || [];
+        state.quotes = {};
+        (data.quotes || []).forEach((q) => { state.quotes[q.ticker] = q; });
+        renderTickerGrid();
+    }
+
+    async function fetchPortfolio() {
+        const res = await fetch(API_BASE + "/portfolio");
+        if (!res.ok) throw new Error("portfolio " + res.status);
+        const data = await res.json();
+        const p = data.portfolio || {};
+        state.cash = p.cash_balance || 0;
+        state.totalPositionValue = p.total_position_value || 0;
+        state.positions = {};
+        (p.positions || []).forEach((pos) => { state.positions[pos.ticker] = pos; });
+        renderSummary();
+        renderTickerGrid();
+    }
+
+    async function fetchHistory() {
+        const res = await fetch(API_BASE + "/history");
+        if (!res.ok) throw new Error("history " + res.status);
+        const data = await res.json();
+        state.history = data.decisions || [];
+        rebuildFilterOptions();
+        renderHistoryView();
+    }
+
+    /* ---------------- run cycle ---------------- */
+    async function runCycle() {
+        if (state.isRunning) return;
+        state.isRunning = true;
+
+        const btn = $("runCycleBtn");
+        btn.disabled = true;
+        $("runLabel").textContent = "RUNNING";
+        $("runIcon").textContent = "hourglass_top";
+        switchView("terminal");
+
+        $("activityLog").innerHTML = "";
+        $("cycleStatus").textContent = "RUNNING - querying Gemini for " + (state.watchlist.length || "?") + " tickers";
+        $("progressBar").style.width = "15%";
+
+        const started = Date.now();
+        const ticker = setInterval(() => {
+            $("cycleStatus").textContent = "RUNNING - " + Math.round((Date.now() - started) / 1000) + "s elapsed (expect ~40s)";
+        }, 1000);
+
+        logLine("Cycle started. POST /run-cycle", "INFO");
+
+        try {
+            const res = await fetch(API_BASE + "/run-cycle", { method: "POST" });
+            $("progressBar").style.width = "70%";
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            const data = await res.json();
+
+            const results = data.results || [];
+            const errors = data.errors || [];
+
+            results.forEach((r) => {
+                const d = r.decision || {};
+                const conf = d.confidence !== undefined ? " (" + Math.round(Number(d.confidence) * 100) + "%)" : "";
+                const tone = d.action === "BUY" ? "SUCCESS" : d.action === "SELL" ? "WARN" : "INFO";
+                logLine(r.ticker + " @ " + money(r.latest_price) + " -> " + d.action + conf + " - " + d.reasoning, tone);
+                if (r.trade && r.trade.status === "executed") {
+                    logLine("  TRADE " + r.trade.action + " " + r.trade.shares + " " + r.trade.ticker + " @ " + money(r.trade.price), "SUCCESS");
+                } else if (r.trade && r.trade.status === "skipped") {
+                    logLine("  SKIPPED - " + r.trade.reason, "WARN");
+                }
+            });
+
+            errors.forEach((e) => logLine(e.ticker + " failed - " + summarizeError(e.error), "ERROR"));
+
+            $("progressBar").style.width = "100%";
+
+            if (errors.length && !results.length) {
+                $("cycleStatus").textContent = "FAILED - all " + errors.length + " tickers errored";
+                logLine("Cycle FAILED - no decisions logged, no trades made.", "ERROR");
+            } else if (errors.length) {
+                $("cycleStatus").textContent = "PARTIAL - " + results.length + " ok, " + errors.length + " errors";
+                logLine("Cycle finished with " + errors.length + " error(s); " + results.length + " processed.", "WARN");
+            } else {
+                $("cycleStatus").textContent = "COMPLETE - " + results.length + " processed";
+                logLine("Cycle complete. " + results.length + " ticker(s) processed.", "SUCCESS");
+            }
+
+            await fetchPortfolio();
+            await fetchHistory();
+            await fetchWatchlist();
+            setConnection("online");
+
+        } catch (err) {
+            setConnection("offline");
+            $("cycleStatus").textContent = "FAILED - " + err.message;
+            logLine("Cycle failed: " + err.message + ". Is the API reachable at " + API_LABEL + "?", "ERROR");
+        } finally {
+            clearInterval(ticker);
+            state.isRunning = false;
+            btn.disabled = false;
+            $("runLabel").textContent = "RUN CYCLE";
+            $("runIcon").textContent = "play_arrow";
+            setTimeout(() => { $("progressBar").style.width = "0%"; }, 2000);
+        }
+    }
+
+    /* ---------------- init ---------------- */
+    async function init() {
+        setConnection("pending");
+        try {
+            await fetchWatchlist();
+            await fetchPortfolio();
+            await fetchHistory();
+            renderRecentDecisions();
+            setConnection("online");
+            $("cycleStatus").textContent = "IDLE - awaiting command";
+        } catch (err) {
+            setConnection("offline");
+            $("cycleStatus").textContent = "OFFLINE - backend unreachable";
+            $("activityLog").innerHTML =
+                '<div class="text-error text-label-sm">Backend unreachable at ' + esc(API_LABEL)
+                + '. Start FastAPI on port 8000, then reload.</div>';
+            renderTickerGrid();
+            renderSummary();
+        }
+    }
+
+    // Sidebar collapse (from the original export)
+    $("sidebar-toggle").addEventListener("click", () => {
+        const sidebar = $("sidebar");
+        const icon = $("sidebar-toggle-icon");
+        const collapsed = sidebar.classList.contains("sidebar-collapsed");
+        if (collapsed) {
+            sidebar.classList.remove("sidebar-collapsed");
+            sidebar.classList.add("sidebar-expanded");
+            icon.style.transform = "rotate(0deg)";
+        } else {
+            sidebar.classList.remove("sidebar-expanded");
+            sidebar.classList.add("sidebar-collapsed");
+            icon.style.transform = "rotate(180deg)";
+        }
+    });
+
+    document.querySelectorAll(".nav-link").forEach((n) => {
+        n.addEventListener("click", (e) => {
+            e.preventDefault();
+            switchView(n.dataset.view);
+        });
+    });
+
+    $("runCycleBtn").addEventListener("click", runCycle);
+    $("historyFilter").addEventListener("change", renderHistoryView);
+    $("modalCloseX").addEventListener("click", closeReport);
+    $("reportModal").addEventListener("click", (e) => { if (e.target === $("reportModal")) closeReport(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeReport(); });
+
+    init();
+</script>
+</body>
+</html>

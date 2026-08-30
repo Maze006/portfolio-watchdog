@@ -1,0 +1,35 @@
+# --- Secrets -----------------------------------------------------------------
+# .env holds live Gemini API keys. Never commit it.
+# .env.example is the safe template and IS committed.
+.env
+.env.bak
+.env.local
+*.key
+
+# --- Python ------------------------------------------------------------------
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Local database ----------------------------------------------------------
+# Generated at runtime; init_db() recreates it on first launch.
+# To ship a pre-populated demo database instead, run: git add -f watchdog.db
+watchdog.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.db.backup
+
+# --- Editors / OS ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+Desktop.ini
