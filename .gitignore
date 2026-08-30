@@ -33,3 +33,4 @@ watchdog.db
 *.swp
 Thumbs.db
 Desktop.ini
+.claude/
